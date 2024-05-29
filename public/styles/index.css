@@ -25,14 +25,24 @@
   color: var(--color-muted);
 }
 
-/*  TODO FIX THIS */
-#about-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
 
 pre {
   white-space: pre-wrap;
   max-width: 600px;
+  word-wrap: break-word;
+}
+
+#substack_url {
+  width: 100%;
+  height: 25px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+#footer {
+  max-width: 600px;
+  margin-bottom: 100px;
+  position:absolute;
+   bottom:0;
+   width:100%;
+   height:100px;   
 }
