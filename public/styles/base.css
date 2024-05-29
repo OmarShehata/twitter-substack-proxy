@@ -1,0 +1,59 @@
+/* 
+https://colorhunt.co/palette/fefaf6eadbc8dac0a3102c57
+*/
+:root {
+  --color-bg: #FAF9F6;
+  --color-primary: #3c3c3c;
+  --color-muted: #a7a7a7;
+}
+
+@font-face {
+  font-family: HK Grotesk;
+  font-weight: bold;
+  src: url("/fonts/HKGrotesk-Bold.otf")
+    format("opentype");
+}
+
+html {
+  font-family: HK Grotesk;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-primary);
+  background: var(--color-bg);
+  font-size: 18px;
+}
+
+.content {
+    margin:auto;
+    max-width: 700px;
+    padding: 30px;
+}
+
+@media only screen and (max-width : 900px) {
+    .content {
+      padding: 0px;
+    }
+}
+
+.muted-text {
+  color: var(--color-muted);
+}
+
+a {
+  color: var(--color-muted);
+}
+
+.three-dots {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.three-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-muted);
+  display: inline-block;
+  margin: 0 15px;
+}

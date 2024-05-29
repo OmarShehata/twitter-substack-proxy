@@ -1,0 +1,38 @@
+#title-container {
+  /*text-align: center;*/
+  display: flex;
+  flex-direction: column;
+      align-items: center;
+}
+
+#title {
+  margin-bottom: 0px;
+  font-size: 64px;
+}
+
+@media only screen and (max-width: 900px) {
+  #title {
+    font-size: 32px;
+  }
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
+#subtitle {
+  margin-top: 0px;
+  color: var(--color-muted);
+}
+
+/*  TODO FIX THIS */
+#about-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+pre {
+  white-space: pre-wrap;
+  max-width: 600px;
+}
