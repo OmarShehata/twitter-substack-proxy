@@ -2,6 +2,12 @@
 
 Twitter artificially limits the reach of substack links. They do not display the preview card like other links to, and tweets get limited reach if they link specifically to substack. This is a workaround.
 
+deployed at:
+
+## http://substack-proxy.glitch.me/
+
+project page on glitch: https://glitch.com/~substack-proxy
+
 ### Setup
 
 Clone this repo. Install node/pnpm (https://pnpm.io/installation).
