@@ -14,7 +14,7 @@ project page on glitch: https://glitch.com/~substack-proxy
 
 Example page source (with `?noredirect` param so you can view source). It will appear blank, because it only has meta tags and a JS snippet to redirect to the substack article:
 
-https://substack-proxy.glitch.me/articles/omarshehata_substack_com_p_my-favorite-1980s-canadian-tv-show.html?noredirect
+https://substack-proxy.glitch.me/articles/omarshehata-substack-com-p-my-favorite-1980s-canadian-tv-show.html?noredirect
 
 ### Setup
 
