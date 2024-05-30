@@ -12,6 +12,9 @@ project page on glitch: https://glitch.com/~substack-proxy
 
 ![before_after](https://github.com/OmarShehata/twitter-substack-proxy/assets/1711126/07766d92-96c6-4b43-9980-1d81cfe2b3d3)
 
+Example page source (with `?noredirect` param so you can view source). It will appear blank, because it only has meta tags and a JS snippet to redirect to the substack article:
+
+https://substack-proxy.glitch.me/articles/omarshehata_substack_com_p_my-favorite-1980s-canadian-tv-show.html?nodirect
 
 ### Setup
 
@@ -36,3 +39,4 @@ Even if they banned this glitch app, anyone can host this on their own website, 
 If my app ever breaks or catches fire and burns, the URLs it generates are derived from the original URLs, so no data is lost (a quick google search will find the original article).
 
 I debated preserving the original URL as-is by base64-encoding it, but that sacrifices readability.
+
