@@ -1,30 +1,35 @@
-function loadFromLocalStorage(urlParams, inputElement) {
-    if (urlParams.get('url') == null) {
-    if (localStorage.getItem('url')) {
-      inputElement.value = localStorage.getItem('url')
-    }
-  }
-}
-
-function updateOutput(inputElement, outputElement) {
-    const newUrl = inputElement.value
-    const encodedUrl = encodeURIComponent(inputElement.value)
-    localStorage.setItem('url', newUrl)
-    
-    
-    outputElement.innerHTML = `${window.location.origin}/url/${encodedUrl}`
-}
-
 window.onload = function() {
-  const urlParams = new URLSearchParams(window.location.search);
   const outputElement = document.querySelector("#output")
   const inputElement = document.querySelector("#substack_url")
   
-  loadFromLocalStorage(urlParams, inputElement)
-  
-  inputElement.oninput = (e) => {
-    updateOutput(inputElement, outputElement)
+  inputElement.oninput = async (e) => {
+    if (inputElement.value == '') {
+      document.querySelector("#you-can-now-text").style.display = 'block'
+      outputElement.innerHTML = ''
+      return
+    }
+
+    try {
+      // generate the url
+      outputElement.innerHTML = 'loading...'
+      const url = encodeURIComponent(inputElement.value)
+      console.log("Generating url for", inputElement.value)
+      const response = await fetch(`/generate-url/${url}`);
+      const data = await response.json();
+      console.log("response: ", data)
+      if (data.done == false) {
+        throw Error(data.error)
+      }
+
+      // display the result 
+      document.querySelector("#you-can-now-text").style.display = 'block'
+      outputElement.innerHTML = `${window.location.origin}/articles/${data.hash}.html`
+    } catch (e) {
+      console.error(e)
+      outputElement.innerHTML = 'Error: ' + String(e)
+    }
+    
   }
-  updateOutput(inputElement, outputElement)
+
 }
 

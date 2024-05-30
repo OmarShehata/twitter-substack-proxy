@@ -39,6 +39,8 @@ pre {
   border-radius: 5px;
 }
 #footer {
+  color: var(--color-muted);
+
   max-width: 600px;
   margin-bottom: 100px;
   position:absolute;
