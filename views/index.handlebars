@@ -21,11 +21,20 @@
     <pre id="output">
     </pre>
 
+    <button style="display: none;" id="copy-btn" class="button-4" role="button">Copy</button>
+
+
 <script src="/script.js"></script>
 
 <div id="footer">
   <p>
-    I hate that I can't share substack links on Twitter. It doesn't show the preview card, and tweets with substack links get severely limited in terms of algorithm/reach. So this is my workaround.
+    Twitter makes it essentially impossible to share substack links. (1) they do not display the title / preview card and (2) tweets with substack links get heavily downranked by the algorithm, and thus very little visibility. 
+  </p>
+  <p>
+    This is a little workaround. You give it a substack URL, it generates an HTML page that (1) has the same &lt;meta&gt; tags as your substack article (2) automatically redirects to it. This cannot be banned. You even can take this HTML page and host it yourself anywhere.
+  </p>
+  <p>
+    You can add <code>?noredirect</code> to the generated URL, if you want to see the page and download it/self host it.
   </p>
 <p>
   Source code: <a href="https://github.com/OmarShehata/twitter-substack-proxy">

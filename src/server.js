@@ -15,6 +15,9 @@ const URLS_DIRECTORY = path.join(__dirname, '../public/articles/')
 
 const expresshandlebars = create();
 
+function encodeURL(url) {
+  return url.replace(/[:/.]/g, '_');
+}
 
 async function run() {
   fs.mkdirSync(URLS_DIRECTORY, { recursive: true });
@@ -39,7 +42,8 @@ async function run() {
     const force = request.params.force === 'true'
     // const md5 = crypto.createHash('md5')
     // const hash = md5.update(url).digest('hex')
-    const hash = btoa(decodeURIComponent(url))
+    // const hash = btoa(decodeURIComponent(url))
+    const hash = encodeURL(url.replace("https://", ""))
     const filepath = `${URLS_DIRECTORY}/${hash}.html`
 
     if (fs.existsSync(filepath) && force != true) {

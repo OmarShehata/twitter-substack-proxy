@@ -1,5 +1,7 @@
 # twitter substack proxy
 
+Twitter artificially limits the reach of substack links. They do not display the preview card like other links to, and tweets get limited reach if they link specifically to substack. This is a workaround.
+
 ### Setup
 
 Clone this repo. Install node/pnpm (https://pnpm.io/installation).
@@ -10,13 +12,3 @@ Clone this repo. Install node/pnpm (https://pnpm.io/installation).
 
 `src/server.js` is the server code. `views/index.handlebars` is the main page. 
 
-TODO
-
-- fetch the HTML page for substack from the client..?
-- send that HTML to the server
-
-
-### netlify notes
-
-- http://localhost:8888/api/hello -> server
-- http://localhost:3999/script.js -> static 

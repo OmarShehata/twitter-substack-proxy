@@ -11,6 +11,9 @@
 <meta  name="twitter:card" content="summary_large_image">
 
 <script>
-    // redirect to substack url
-    window.location.replace("{{url}}")
+    const params = new URLSearchParams(window.location.search)
+    if (!params.get('noredirect')) {
+        // redirect to substack url
+        window.location.replace("{{url}}")
+    }
 </script>
