@@ -14,3 +14,9 @@ TODO
 
 - fetch the HTML page for substack from the client..?
 - send that HTML to the server
+
+
+### netlify notes
+
+- http://localhost:8888/api/hello -> server
+- http://localhost:3999/script.js -> static 

@@ -4,3 +4,5 @@ node_modules
 .data
 .env 
 public/articles/
+# Local Netlify folder
+.netlify
