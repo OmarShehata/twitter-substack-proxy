@@ -6,7 +6,8 @@
   },
   "scripts": {
     "start": "node src/server.js",
-    "watch": "nodemon --ignore public/ src/server.js"
+    "watch": "nodemon --ignore public/ src/server.js",
+    "deploy": "git push glitch main --force"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
