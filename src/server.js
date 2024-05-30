@@ -7,6 +7,7 @@ import * as fs from 'fs';
 import { fileURLToPath } from 'url';
 import { JSDOM } from 'jsdom'
 import { error } from 'console';
+import fetch from 'node-fetch';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // TODO: how to ensure this doesn't get overwritten between deploys?
