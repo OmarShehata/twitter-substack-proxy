@@ -8,16 +8,13 @@ import { fileURLToPath } from 'url';
 import { JSDOM } from 'jsdom'
 import { error } from 'console';
 import fetch from 'node-fetch';
+import * as urlSlug from 'url-slug'
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // TODO: how to ensure this doesn't get overwritten between deploys?
 const URLS_DIRECTORY = path.join(__dirname, '../public/articles/')
 
 const expresshandlebars = create();
-
-function encodeURL(url) {
-  return url.replace(/[:/.]/g, '_');
-}
 
 async function run() {
   fs.mkdirSync(URLS_DIRECTORY, { recursive: true });
@@ -43,7 +40,7 @@ async function run() {
     // const md5 = crypto.createHash('md5')
     // const hash = md5.update(url).digest('hex')
     // const hash = btoa(decodeURIComponent(url))
-    const hash = encodeURL(url.replace("https://", ""))
+    const hash = urlSlug.convert(url.replace("https://", ""))
     const filepath = `${URLS_DIRECTORY}/${hash}.html`
 
     if (fs.existsSync(filepath) && force != true) {
