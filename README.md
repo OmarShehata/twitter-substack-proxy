@@ -8,6 +8,11 @@ deployed at:
 
 project page on glitch: https://glitch.com/~substack-proxy
 
+**before / after**
+
+![before_after](https://github.com/OmarShehata/twitter-substack-proxy/assets/1711126/07766d92-96c6-4b43-9980-1d81cfe2b3d3)
+
+
 ### Setup
 
 Clone this repo. Install node/pnpm (https://pnpm.io/installation).
