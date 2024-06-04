@@ -9,11 +9,78 @@
 <meta  property="og:image" content="{{image}}">
 <meta  name="twitter:image" content="{{image}}">
 <meta  name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <script>
     const params = new URLSearchParams(window.location.search)
     if (!params.has('noredirect')) {
         // redirect to substack url
         window.location.replace("{{url}}")
+    } else {
+        window.onload = () => {
+            document.querySelector("#go-to-article").style.display = 'block'
+        }
     }
 </script>
+
+<style>
+.button-4 {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 12px 20px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+a {
+    text-decoration: none;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.container {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  height: 100vh;           /* Full viewport height */
+}
+.centered {
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+</style>
+<div class="container centered">
+    <div id="go-to-article" style="display: none;">
+        <a class="button-4" href="{{url}}">Go to article</a>
+        <p>
+            (this manual step is necessary to defeat Twitter's scanning of the link to detect that it redirects to substack)
+        </p>
+    </div>
+</div>
+
+
