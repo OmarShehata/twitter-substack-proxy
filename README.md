@@ -16,6 +16,10 @@ Example page source (with `?noredirect` param so you can view source). It will a
 
 https://substack-proxy.glitch.me/articles/omarshehata-substack-com-p-my-favorite-1980s-canadian-tv-show.html?noredirect
 
+### Alternatives
+
+- https://substackfwd.xyz/?url=
+
 ### Setup
 
 Clone this repo. Install node/pnpm (https://pnpm.io/installation).
