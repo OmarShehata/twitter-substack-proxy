@@ -9,6 +9,7 @@ import { JSDOM } from 'jsdom'
 import { error } from 'console';
 import fetch from 'node-fetch';
 import * as urlSlug from 'url-slug'
+import * as UrlUtil from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // TODO: how to ensure this doesn't get overwritten between deploys?
@@ -37,10 +38,14 @@ async function run() {
   app.get("/generate-url/:url/:force?", async function (request, response) {
     const url = request.params.url
     const force = request.params.force === 'true'
+    // remove url params
+    const parsedUrl = UrlUtil.parse(url)
+    parsedUrl.search = ''
+    const finalUrl = UrlUtil.format(parsedUrl)
     // const md5 = crypto.createHash('md5')
     // const hash = md5.update(url).digest('hex')
     // const hash = btoa(decodeURIComponent(url))
-    const hash = urlSlug.convert(url.replace("https://", ""))
+    const hash = urlSlug.convert(finalUrl.replace("https://", ""))
     const filepath = `${URLS_DIRECTORY}/${hash}.html`
 
     if (fs.existsSync(filepath) && force != true) {
@@ -51,7 +56,7 @@ async function run() {
     // fetch substack page, extra meta tags
     let htmlPage
     try {
-      const articleRequest = await fetch(url);
+      const articleRequest = await fetch(finalUrl);
       htmlPage = await articleRequest.text();
     } catch (e) {
       response.json({ done: false, error: String(e)  })
