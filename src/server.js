@@ -35,12 +35,15 @@ async function run() {
   app.get("/", async function (request, response) {
     response.render('index', { average:0 })
   });
-  app.get("/generate-url/:url/:force?", async function (request, response) {
+  app.get("/generate-url/:url/:manualRedirect?", async function (request, response) {
     const url = request.params.url
-    const force = request.params.force === 'true'
+    const manualRedirect = request.params.manualRedirect === 'true'
     // remove url params
     const parsedUrl = UrlUtil.parse(url)
     parsedUrl.search = ''
+    if (manualRedirect) {
+      parsedUrl.search = 'manualredirect'
+    }
     const finalUrl = UrlUtil.format(parsedUrl)
     // const md5 = crypto.createHash('md5')
     // const hash = md5.update(url).digest('hex')
@@ -48,7 +51,7 @@ async function run() {
     const hash = urlSlug.convert(finalUrl.replace("https://", ""))
     const filepath = `${URLS_DIRECTORY}/${hash}.html`
 
-    if (fs.existsSync(filepath) && force != true) {
+    if (fs.existsSync(filepath)) {
       response.json({ done: true, cached: true, hash  })
       return
     }
@@ -73,7 +76,7 @@ async function run() {
     // create an html page to mimic those tags
     const templateSource = fs.readFileSync('./views/article-card-template.handlebars', 'utf-8')
     const generatedtemplate = expresshandlebars.handlebars.compile(templateSource);
-    fs.writeFileSync(filepath, generatedtemplate({ title, description, image, url: finalUrl }), 'utf-8');
+    fs.writeFileSync(filepath, generatedtemplate({ title, description, image, url: finalUrl, manualRedirect }), 'utf-8');
     response.json({ done: true,hash })
   });
 

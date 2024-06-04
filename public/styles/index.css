@@ -107,3 +107,15 @@ pre {
 .button-4:-webkit-details-marker {
   display: none;
 }
+
+#redirect-mode-container {
+  margin-top: 20px;
+  color: var(--color-muted)
+}
+
+input[type="checkbox"] {
+  /* Your CSS styles here */
+  width: 15px;
+  height: 15px;
+  background-color: yellow;
+}

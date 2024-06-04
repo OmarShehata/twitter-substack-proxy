@@ -12,17 +12,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <script>
+    {{#unless manualRedirect}}
     const params = new URLSearchParams(window.location.search)
     if (!params.has('noredirect')) {
         // redirect to substack url
         window.location.replace("{{url}}")
-    } else {
-        window.onload = () => {
-            document.querySelector("#go-to-article").style.display = 'block'
-        }
     }
+    {{/unless }}
+    {{#if manualRedirect}}
+    window.onload = () => {
+        document.querySelector("#go-to-article").style.display = 'block'
+    }
+    {{/if}}
 </script>
 
+{{#if manualRedirect}}
 <style>
 .button-4 {
   appearance: none;
@@ -71,7 +75,6 @@ html, body {
 }
 .centered {
   padding: 20px;
-  border: 1px solid #ccc;
 }
 </style>
 <div class="container centered">
@@ -82,5 +85,5 @@ html, body {
         </p>
     </div>
 </div>
-
+{{/if}}
 
