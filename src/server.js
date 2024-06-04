@@ -73,7 +73,7 @@ async function run() {
     // create an html page to mimic those tags
     const templateSource = fs.readFileSync('./views/article-card-template.handlebars', 'utf-8')
     const generatedtemplate = expresshandlebars.handlebars.compile(templateSource);
-    fs.writeFileSync(filepath, generatedtemplate({ title, description, image, url }), 'utf-8');
+    fs.writeFileSync(filepath, generatedtemplate({ title, description, image, url: finalUrl }), 'utf-8');
     response.json({ done: true,hash })
   });
 
