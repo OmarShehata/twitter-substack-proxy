@@ -1,5 +1,7 @@
 # twitter substack proxy
 
+see writeup here: https://omarshehata.substack.com/p/fighting-twitters-censorship-of-substack
+
 Twitter artificially limits the reach of substack links. They do not display the preview card like other links to, and tweets get limited reach if they link specifically to substack. This is a workaround.
 
 deployed at:
