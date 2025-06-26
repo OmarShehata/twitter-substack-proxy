@@ -34,9 +34,9 @@ window.onload = function() {
   
         let response 
         if (manualRedirectCheckbox.checked) {
-          response = await fetch(`/generate-url/${url}/true`);
+          response = await fetch(`/substack-proxy/generate-url/${url}/true`);
         } else {
-          response = await fetch(`/generate-url/${url}`);
+          response = await fetch(`/substack-proxy/generate-url/${url}`);
         }
 
         const data = await response.json();
@@ -48,7 +48,7 @@ window.onload = function() {
         // display the result 
         document.querySelector("#you-can-now-text").style.display = 'block'
         copyBtn.style.display = 'block'
-        outputElement.innerHTML = `${window.location.origin}/articles/${data.hash}.html`
+        outputElement.innerHTML = `${window.location.origin}/substack-proxy/articles/${data.hash}.html`
       } catch (e) {
         console.error(e)
         outputElement.innerHTML = 'Error: ' + String(e)
