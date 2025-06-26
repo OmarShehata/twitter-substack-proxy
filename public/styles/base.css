@@ -10,7 +10,7 @@ https://colorhunt.co/palette/fefaf6eadbc8dac0a3102c57
 @font-face {
   font-family: HK Grotesk;
   font-weight: bold;
-  src: url("/fonts/HKGrotesk-Bold.otf")
+  src: url("../fonts/HKGrotesk-Bold.otf")
     format("opentype");
 }
 

@@ -83,7 +83,7 @@ async function run() {
   // Create parent app and mount substack app
   const parentApp = express();
   parentApp.use('/substack-proxy', app);
-  parentApp.use('/', app); // Keep root access working too
+  // parentApp.use('/', app); // Keep root access working too
 
   const listener = parentApp.listen(process.env.PORT, function () {
     console.log('Your app is listening on port ' + listener.address().port);
