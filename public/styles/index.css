@@ -119,3 +119,23 @@ input[type="checkbox"] {
   height: 15px;
   background-color: yellow;
 }
+
+
+#redirect-banner {
+  background-color: #dc3545; /* Bootstrap red */
+  color: white;
+  text-align: center;
+  padding: 12px 20px;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Optional: Add some styling for links in the banner */
+#redirect-banner a {
+  color: white;
+  text-decoration: underline;
+}
