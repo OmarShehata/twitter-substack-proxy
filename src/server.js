@@ -35,9 +35,20 @@ async function run() {
   app.get("/", async function (request, response) {
     response.render('index', { average:0 })
   });
+  /*
   app.get("/generate-url/:url/:manualRedirect?", async function (request, response) {
     const url = request.params.url
     const manualRedirect = request.params.manualRedirect === 'true'
+  */
+  app.get("/generate-url/*", async function (request, response) {
+    let url = request.params[0];
+    let manualRedirect = false;
+    
+    if (url.endsWith('/true')) {
+      url = url.slice(0, -5); // Remove '/true'
+      manualRedirect = true;
+    }
+
     // remove url params
     const parsedUrl = UrlUtil.parse(url)
     parsedUrl.search = ''
