@@ -43,6 +43,9 @@ async function run() {
   app.get("/generate-url/*", async function (request, response) {
     let url = request.params[0];
     let manualRedirect = false;
+    if (url.startsWith('https:/') && !url.startsWith('https://')) {
+      url = url.replace('https:/', 'https://');
+    }
     
     if (url.endsWith('/true')) {
       url = url.slice(0, -5); // Remove '/true'
@@ -94,7 +97,7 @@ async function run() {
   // Create parent app and mount substack app
   const parentApp = express();
   parentApp.use('/substack-proxy', app);
-  // parentApp.use('/', app); // Keep root access working too
+  parentApp.use('/', app); // Keep root access working too
 
   const listener = parentApp.listen(process.env.PORT, function () {
     console.log('Your app is listening on port ' + listener.address().port);
