@@ -13,7 +13,7 @@ import * as UrlUtil from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // TODO: how to ensure this doesn't get overwritten between deploys?
-const URLS_DIRECTORY = path.join(__dirname, '../public/articles/')
+const URLS_DIRECTORY = path.join(__dirname, '../public/articles')
 
 const expresshandlebars = create();
 
@@ -58,11 +58,13 @@ async function run() {
     if (manualRedirect) {
       parsedUrl.search = 'manualredirect'
     }
+
     const finalUrl = UrlUtil.format(parsedUrl)
     // const md5 = crypto.createHash('md5')
     // const hash = md5.update(url).digest('hex')
     // const hash = btoa(decodeURIComponent(url))
     const hash = urlSlug.convert(finalUrl.replace("https://", ""))
+
     const filepath = `${URLS_DIRECTORY}/${hash}.html`
 
     if (fs.existsSync(filepath)) {
@@ -90,6 +92,7 @@ async function run() {
     // create an html page to mimic those tags
     const templateSource = fs.readFileSync('./views/article-card-template.handlebars', 'utf-8')
     const generatedtemplate = expresshandlebars.handlebars.compile(templateSource);
+    console.log({ filepath })
     fs.writeFileSync(filepath, generatedtemplate({ title, description, image, url: finalUrl, manualRedirect }), 'utf-8');
     response.json({ done: true,hash })
   });
